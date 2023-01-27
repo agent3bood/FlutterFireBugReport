@@ -72,7 +72,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         .orderBy('ref')
                         .limit(10)
                         .startAfterDocument(documentSnapshot);
-                    res = (await query.snapshots().first).toString();
+                    final snaps = await query.snapshots().first;
+                    res = 'Received ${snaps.docs.length} documents.';
                   } catch (e, s) {
                     res = 'e: $e\ns: $s';
                   } finally {
